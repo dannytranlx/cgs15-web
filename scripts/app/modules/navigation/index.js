@@ -1,5 +1,6 @@
 define(function (require) {
   var Mn = require('marionette');
+  var Radio = require('backbone.radio');
 
   var NavbarController = require('./controllers/navbar-controller');
 
@@ -8,10 +9,7 @@ define(function (require) {
 
     onStart: function () {
       this.navbarController = new NavbarController({
-        user: new Backbone.Model({
-          name: 'Danny',
-          email: 'danny@dannytran.ca'
-        })
+        user: Radio.channel('auth').request('user')
       });
 
       this.app.header.show(this.navbarController.getView());

@@ -18,12 +18,14 @@ define(function (require) {
   });
 
   // Modules
+  app.module('Auth', require('modules/auth/index'));
   app.module('Navigation', require('modules/navigation/index'));
+  app.module('Users', require('modules/users/index'));
 
   // Regions
   app.addRegions({
     header: '#header',
-    content: '#container',
+    content: '#content',
     footer: '#footer'
   });
 

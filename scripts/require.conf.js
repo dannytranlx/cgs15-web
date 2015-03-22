@@ -12,7 +12,9 @@ requirejs.config({
     'view-controller': 'lib/view-controller',
     Handlebars: '//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min',
     text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text',
-    hbars: 'https://cdnjs.cloudflare.com/ajax/libs/requirejs-handlebars/0.0.2/hbars.min'
+    hbars: 'https://cdnjs.cloudflare.com/ajax/libs/requirejs-handlebars/0.0.2/hbars.min',
+    firebase: 'https://cdn.firebase.com/js/client/2.2.3/firebase',
+    'backbone.firebase': 'https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.min'
   },
 
   shim: {
@@ -25,6 +27,9 @@ requirejs.config({
     backbone: {
       exports: 'Backbone',
       deps: ['jquery', 'underscore']
+    },
+    'backbone.firebase': {
+      deps: ['backbone', 'firebase']
     },
     'backbone.radio': {
       deps: ['backbone']

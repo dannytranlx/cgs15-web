@@ -1,4 +1,5 @@
 define(function (require) {
+  var Radio = require('backbone.radio');
   var ViewController = require('view-controller');
 
   var NavbarView = require('../views/navbar-view');
