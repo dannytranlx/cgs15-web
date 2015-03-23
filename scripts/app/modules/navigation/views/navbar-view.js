@@ -15,7 +15,7 @@ define(function (require) {
 
     triggers: {
       'click @ui.brandLink': 'navigation:navigate-home',
-      'click @ui.searchLink': 'navigation:navigate-users'
+      'click @ui.searchLink': 'navigation:navigate-search'
     }
   });
 });

@@ -21,6 +21,7 @@ define(function (require) {
   app.module('Auth', require('modules/auth/index'));
   app.module('Navigation', require('modules/navigation/index'));
   app.module('Home', require('modules/home/index'));
+  app.module('Search', require('modules/search/index'));
   app.module('Users', require('modules/users/index'));
 
   // Regions

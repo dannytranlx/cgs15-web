@@ -14,11 +14,16 @@ define(function (require) {
 
     viewEvents: {
       'navigation:navigate-home': 'navigateHome',
+      'navigation:navigate-search': 'navigateSearch',
       'navigation:navigate-users': 'navigateUsers'
     },
 
     navigateHome: function () {
       Radio.channel('navigation').command('home');
+    },
+
+    navigateSearch: function () {
+      Radio.channel('navigation').command('search');
     },
 
     navigateUsers: function () {
