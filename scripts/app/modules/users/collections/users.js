@@ -6,6 +6,6 @@ define(function (require) {
 
   return Backbone.Firebase.Collection.extend({
     model: User,
-    url: 'https://spooky-love.firebaseio.com'
+    url: 'https://spooky-love.firebaseio.com/users'
   });
 });
