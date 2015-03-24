@@ -5,10 +5,12 @@ define(function (require) {
 
   var UsersCollection = require('../users/collections/users');
   var LoginController = require('./controllers/login-controller');
+  var DeniedController = require('./controllers/denied-controller');
 
   var Router = Mn.AppRouter.extend({
     appRoutes: {
-      'login': 'showLogin'
+      'login': 'showLogin',
+      'denied': 'showDenied'
     }
   });
 
@@ -40,6 +42,12 @@ define(function (require) {
       Backbone.history.navigate('/login');
       this.loginController = new LoginController();
       this.app.content.show(this.loginController.getView());
+    },
+
+    showDenied: function () {
+      Backbone.history.navigate('/denied');
+      this.deniedController = new DeniedController();
+      this.app.content.show(this.deniedController.getView());
     }
   });
 });
