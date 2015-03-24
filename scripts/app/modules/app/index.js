@@ -9,6 +9,21 @@ define(function (require) {
     this.channel = _.result(this, 'channel') || Radio.channel(this.channelName);
   };
 
+  // Tell jQuery to watch for any 401 or 403 errors and handle them appropriately
+  $.ajaxSetup({
+    statusCode: {
+      401: function () {
+        // Redirect the to the login page.
+        window.location.replace('/#login');
+
+      },
+      403: function () {
+        // 403 -- Access denied
+        window.location.replace('/#denied');
+      }
+    }
+  });
+
   // Create our Application
   var app = new Mn.Application();
 
