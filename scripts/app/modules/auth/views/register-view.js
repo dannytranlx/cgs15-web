@@ -4,17 +4,15 @@ define(function (require) {
 
   return Mn.ItemView.extend({
     className: 'container',
-    template: require('hbars!../templates/login-template'),
+    template: require('hbars!../templates/register-template'),
 
     ui: {
-      loginForm: '[data-ui-login-form]',
-      resetLink: '[data-ui-reset-link]',
+      registerForm: '[data-ui-register-form]',
       alertBanner: '[data-ui-alert-banner]'
     },
 
     events: {
-      'submit @ui.loginForm': 'onSubmit',
-      'click @ui.resetLink': 'onReset'
+      'submit @ui.registerForm': 'onSubmit'
     },
 
     onRender: function () {
@@ -26,17 +24,11 @@ define(function (require) {
       this.hideBanner();
 
       var data = {
-        email: $('input[name=email]').val(),
-        password: $('input[name=password]').val(),
+        'email': $('input[name=email]').val(),
+        'password': $('input[name=password]').val()
       };
 
-      this.trigger('auth:login', data);
-    },
-
-    onReset: function (e) {
-      e.preventDefault();
-      this.hideBanner();
-      this.trigger('auth:reset');
+      this.trigger('auth:register', data);
     },
 
     showBanner: function (text, type) {

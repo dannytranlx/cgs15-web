@@ -8,14 +8,16 @@ define(function (require) {
     viewClass: NavbarView,
     viewOptions: function () {
       return {
-        model: this.getOption('user')
+        model: this.getOption('session')
       };
     },
 
     viewEvents: {
       'navigation:navigate-home': 'navigateHome',
       'navigation:navigate-search': 'navigateSearch',
-      'navigation:navigate-users': 'navigateUsers'
+      'navigation:navigate-users': 'navigateUsers',
+      'navigation:navigate-login': 'navigateLogin',
+      'navigation:navigate-logout': 'navigateLogout'
     },
 
     navigateHome: function () {
@@ -28,6 +30,14 @@ define(function (require) {
 
     navigateUsers: function () {
       Radio.channel('navigation').command('users');
+    },
+
+    navigateLogin: function () {
+      Radio.channel('navigation').command('login');
+    },
+
+    navigateLogout: function () {
+      Radio.channel('navigation').command('logout');
     }
   });
 });

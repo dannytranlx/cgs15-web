@@ -7,12 +7,14 @@ define(function (require) {
   return Mn.Module.extend({
     startsWithParent: true,
 
-    onStart: function () {
-      this.navbarController = new NavbarController({
-        user: Radio.channel('auth').request('user')
-      });
+    initialize: function () {
+      Radio.channel('auth').on('ready', _.bind(function () {
+        this.navbarController = new NavbarController({
+          session: Radio.channel('auth').request('session')
+        });
 
-      this.app.header.show(this.navbarController.getView());
+        this.app.header.show(this.navbarController.getView());
+      }, this));
     }
   });
 });

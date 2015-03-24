@@ -2,7 +2,7 @@ define(function (require) {
   require('backbone.firebase');
   var Backbone = require('backbone');
 
-  var User = require('../models/user');
+  var User = require('../models/user-model');
 
   return Backbone.Firebase.Collection.extend({
     model: User,

@@ -4,6 +4,7 @@ define(function (require) {
   var ViewController = require('view-controller');
 
   var LoginView = require('../views/login-view');
+  var SessionModel = require('../models/session-model');
 
   return ViewController.extend({
     viewClass: LoginView,
@@ -14,27 +15,24 @@ define(function (require) {
 
     initialize: function () {
       this.firebase = new Firebase('https://spooky-love.firebaseio.com');
+      this.app = this.getOption('authApp');
     },
 
-    login: function (e) {
-      this.firebase.authWithPassword({
-        email: $('input[name=email]').val(),
-        password: $('input[name=password]').val(),
-      }, _.bind(function (error, authData) {
-          if (error) {
-            console.log('Login Failed!', error);
-            this.getView().showBanner(error, 'danger');
-          } else {
-            console.log('Authenticated successfully with payload:', authData);
-            this.getView().showBanner('Authenticated successfully', 'success');
+    login: function (data) {
+      this.firebase.authWithPassword(data, _.bind(function (error, authData) {
+        if (error) {
+          console.log('Login Failed!', error);
+          this.getView().showBanner(error, 'danger');
+        } else {
+          console.log('Authenticated successfully with payload:', authData);
 
-            // Set session to authenticated
+          // Set session to authenticated
+          this.app.session.setAuth(authData);
 
-
-            // Navigate to home
-            Radio.channel('navigation').command('home');
-          }
-        }, this));
+          // Navigate to home
+          Radio.channel('navigation').command('home');
+        }
+      }, this));
     },
 
     reset: function () {
