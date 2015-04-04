@@ -24,8 +24,14 @@ define(function (require) {
       this.hideBanner();
 
       var data = {
+        'firstName': $('input[name=firstName]').val(),
+        'lastName': $('input[name=lastName]').val(),
         'email': $('input[name=email]').val(),
-        'password': $('input[name=password]').val()
+        'password': $('input[name=password]').val(),
+        'sex': $('select[name=sex]').val(),
+        'interest': $('select[name=interest]').val(),
+        'birthday': $('input[name=birthday]').val(),
+        'description': $('textarea[name=description]').val(),
       };
 
       this.trigger('auth:register', data);

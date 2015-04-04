@@ -4,12 +4,41 @@
         <form data-ui-register-form>
             <div class="alert" role="alert" data-ui-alert-banner>Unable to login. Forgot password? <a href="#login" data-ui-reset-link>Reset here!</a></div>
             <div class="form-group">
+                <input type="text" class="form-control" name="firstName" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="birthday" placeholder="Birthday" required>
+            </div>
+            <div class="form-group">
                 <input type="text" class="form-control" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <h3>Tell us a <em>bite</em> about you</h3>
+            <div class="form-group form-inline">
+                <label for="sex">I am</label>
+                <select class="form-control" name="sex">
+                    <option value="woman">dead woman</option>
+                    <option value="man">dead man</option>
+                </select>
+                <label for="interest">looking for</label>
+                <select class="form-control" name="interest">
+                    <option value="man">dead man</option>
+                    <option value="woman">dead woman</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+            </div>
         </form>
         <hr>
         <p>Have an account? Log in <a href="#login">here</a></p>

@@ -17,7 +17,8 @@ define(function (require) {
       'navigation:navigate-search': 'navigateSearch',
       'navigation:navigate-users': 'navigateUsers',
       'navigation:navigate-login': 'navigateLogin',
-      'navigation:navigate-logout': 'navigateLogout'
+      'navigation:navigate-logout': 'navigateLogout',
+      'navigation:navigate-account': 'navigateAccount'
     },
 
     navigateHome: function () {
@@ -38,6 +39,10 @@ define(function (require) {
 
     navigateLogout: function () {
       Radio.channel('navigation').command('logout');
+    },
+
+    navigateAccount: function () {
+      Radio.channel('navigation').command('me');
     }
   });
 });

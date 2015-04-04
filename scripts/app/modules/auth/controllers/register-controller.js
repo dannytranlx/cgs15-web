@@ -33,7 +33,13 @@ define(function (require) {
           this.firebase.onAuth(_.bind(function (authData) {
             if (authData) {
               this.firebase.child('users').child(authData.uid).set({
-                email: authData.password.email
+                email: authData.password.email,
+                firstName: userObj.firstName,
+                lastName: userObj.lastName,
+                interest: userObj.interest,
+                sex: userObj.sex,
+                birthday: new Date(userObj.birthday).getTime(),
+                description: userObj.description
               });
             }
           }, this));

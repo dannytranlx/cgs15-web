@@ -18,13 +18,14 @@ define(function (require) {
       'click @ui.brandLink': 'navigation:navigate-home',
       'click @ui.searchLink': 'navigation:navigate-search',
       'click @ui.loginLink': 'navigation:navigate-login',
-      'click @ui.logoutLink': 'navigation:navigate-logout'
+      'click @ui.logoutLink': 'navigation:navigate-logout',
+      'click @ui.accountLink': 'navigation:navigate-account'
     },
 
     serializeData: function () {
       return {
         loggedIn: this.model ? this.model.get('loggedIn') : false,
-        email: this.model ? this.model.get('user').get('email') : ''
+        email: this.model && this.model.get('user') ? this.model.get('user').get('email') : ''
       };
     }
   });

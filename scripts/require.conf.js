@@ -1,5 +1,6 @@
 'use strict';
 
+/* global requirejs */
 requirejs.config({
   paths: {
     modules: 'app/modules',
@@ -33,6 +34,9 @@ requirejs.config({
     },
     'backbone.radio': {
       deps: ['backbone']
+    },
+    bootstrap: {
+      deps: ['jquery']
     },
     marionette: {
       exports: 'Marionette',
