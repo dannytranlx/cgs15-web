@@ -22,6 +22,7 @@ define(function (require) {
     },
 
     showHome: function () {
+      Backbone.history.navigate('/');
       this.homeController = new HomeController();
 
       this.app.content.show(this.homeController.getView());

@@ -15,7 +15,8 @@ requirejs.config({
     text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text',
     hbars: 'https://cdnjs.cloudflare.com/ajax/libs/requirejs-handlebars/0.0.2/hbars.min',
     firebase: 'https://cdn.firebase.com/js/client/2.2.3/firebase',
-    'backbone.firebase': 'https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.min'
+    'backbone.firebase': 'https://cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.min',
+    md5: 'https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/1.0.1/js/md5.min'
   },
 
   shim: {

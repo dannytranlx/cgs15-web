@@ -7,7 +7,8 @@ define(function (require) {
     viewClass: UserView,
     viewOptions: function () {
       return {
-        model: this.getOption('user')
+        model: this.getOption('user'),
+        isSelf: this.getOption('isSelf')
       };
     }
   });

@@ -17,6 +17,10 @@ define(function (require) {
   return Mn.Module.extend({
     startsWithParent: true,
 
+    initialize: function () {
+      this.usersCollection = new UsersCollection();
+    },
+
     onStart: function () {
       this.router = new Router({
         controller: this
@@ -29,7 +33,6 @@ define(function (require) {
 
     showUsers: function () {
       Backbone.history.navigate('/users');
-      this.usersCollection = new UsersCollection();
 
       this.usersController = new UsersController({
         users: this.usersCollection
@@ -39,23 +42,49 @@ define(function (require) {
     },
 
     showUser: function (userId) {
-      Backbone.history.navigate('/user/' + userId);
-      this.usersCollection = new UsersCollection();
-      var user = this.usersCollection.find(userId);
-
-      this.userController = new UserController({
-        user: user
-      });
-
-      this.app.content.show(this.userController.getView());
+      if (this.usersCollection.length > 0) {
+        var user = this._findUser(userId);
+        if (user) {
+          this._showUser(user);
+        }
+      } else {
+        this.listenTo(this.usersCollection, 'sync', function () {
+          var user = this._findUser(userId);
+          if (user) {
+            this._showUser(user);
+          }
+        });
+      }
     },
 
     showMe: function () {
-      Backbone.history.navigate('/user/me');
       var user = Radio.channel('auth').request('user');
+      if (user) {
+        this._showUser(user, true);
+      } else {
+        Radio.channel('auth').on('ready', _.bind(function () {
+          var user = Radio.channel('auth').request('user');
+          this._showUser(user, true);
+        }, this));
+      }
+    },
+
+    _findUser: function (userId) {
+      var user = this.usersCollection.get(userId);
+      if (user) {
+        return user;
+      } else {
+        Radio.channel('navigation').command('404');
+      }
+    },
+
+    _showUser: function (user, isSelf) {
+      var userId = isSelf ? 'me' : user.get('id');
+      Backbone.history.navigate('/user/' + userId);
 
       this.userController = new UserController({
-        user: user
+        user: user,
+        isSelf: isSelf
       });
 
       this.app.content.show(this.userController.getView());

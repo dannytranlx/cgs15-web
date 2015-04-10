@@ -1,8 +1,20 @@
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <h1>{{name}}</h1>
-        <div class="col-md-4">
-            
+<div class="container">
+    <div class="col-sm-3">
+        <a href="http://www.gravatar.com/avatar/{{gravatarHash}}?s=200&d=mm"><img class="img-thumbnail img-responsive" src="http://www.gravatar.com/avatar/{{gravatarHash}}?s=200&d=mm" alt="{{firstName}}'s photo" /></a>
+    </div>
+    <div class="col-sm-9">
+        <h1>{{firstName}} {{lastName}} {{#if showEmail }}<small>(<a href="mailto:{{ email }}">{{ email }}</a>)</small>{{/if}}</h1>
+        <h4>is a {{#if age}} {{ age }} year young {{/if}} dead {{ sex }} interested in dead {{ interest }}</h4>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <button class="btn btn-primary" data-ui-btn-send-message>Send Message</button>
+                <button class="btn btn-primary" data-ui-btn-propose-date>Propose a Date</button>
+            </div>
         </div>
+    </div>
+    <div class="col-sm-12">
+        <h2>Description</h2>
+        <p>{{ description }}</p>
     </div>
 </div>
