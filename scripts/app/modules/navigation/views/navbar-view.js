@@ -19,7 +19,10 @@ define(function (require) {
       'click @ui.searchLink': 'navigation:navigate-search',
       'click @ui.loginLink': 'navigation:navigate-login',
       'click @ui.logoutLink': 'navigation:navigate-logout',
-      'click @ui.accountLink': 'navigation:navigate-account'
+      'click @ui.accountLink': {
+        event: 'navigation:navigate-account',
+        stopPropagation: false
+      }
     },
 
     serializeData: function () {
